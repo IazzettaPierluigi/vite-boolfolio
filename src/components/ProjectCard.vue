@@ -1,6 +1,8 @@
 <template>
     <div class="project-card">
-        <h2>{{ project.title }}</h2>
+        <router-link :to="{ name: 'project', params: { slug: project.slug } }">
+            {{ project.title }}
+        </router-link>
         <img :src="project.img" alt="Project Image">
         <p>descrizione progetto: <span style="color: red;">{{ project.description }}</span></p>
         <!-- Aggiungi qui qualsiasi altra informazione del progetto che vuoi visualizzare -->
