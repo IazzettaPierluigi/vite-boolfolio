@@ -58,21 +58,23 @@ export default {
           <ProjectCard :project="project" />
         </div>
       </div>
-    </div>
 
-    <nav aria-label="Page navigation example">
-      <ul class="pagination">
-        <li class="page-item" :class="{ 'disabled': currentPage === 1 }">
-          <button class="page-link" @click="getProjects(currentPage - 1)">Previous</button>
-        </li>
-        <!-- <li class="page-item"><a class="page-link" href="#">1</a></li>
+
+      <nav aria-label="Page navigation example">
+        <ul class="pagination">
+          <li class="page-item" :class="{ 'disabled': currentPage === 1 }">
+            <button class="page-link" @click="getProjects(currentPage - 1)">Previous</button>
+          </li>
+          <!-- <li class="page-item"><a class="page-link" href="#">1</a></li>
         <li class="page-item"><a class="page-link" href="#">2</a></li>
         <li class="page-item"><a class="page-link" href="#">3</a></li> -->
-        <li class="page-item" :class="{ 'disabled': currentPage === lastPage }">
-          <button class="page-link" @click="getProjects(currentPage + 1)">Next</button>
-        </li>
-      </ul>
-    </nav>
+          <li class="page-item" :class="{ 'disabled': currentPage === lastPage }">
+            <button class="page-link" @click="getProjects(currentPage + 1)">Next</button>
+          </li>
+        </ul>
+      </nav>
+
+    </div>
   </main>
 
 </template>
