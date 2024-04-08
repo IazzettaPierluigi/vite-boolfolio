@@ -12,24 +12,37 @@ export default {
 
   data() {
     return {
-      arrayProjects: []
+      arrayProjects: [],
+      currentPage: '',
+      lastPage: ''
     }
   },
 
   methods: {
-    getProjects() {
-      axios.get('http://127.0.0.1:8000/api/test').then(res => {
+    getProjects(projectApiPage) {
+      axios.get('http://127.0.0.1:8000/api/test',
+        {
+          params: {
+            page: projectApiPage
+          }
+        }
+
+      ).then(res => {
 
         console.log(res.data.projects)
 
-        this.arrayProjects = res.data.projects
+        this.arrayProjects = res.data.projects.data
+
+        this.currentPage = res.data.projects.current_page
+
+        this.lastPage = res.data.projects.last_page
 
       })
     }
   },
 
   mounted() {
-    this.getProjects();
+    this.getProjects(1);
   }
 
 
@@ -37,11 +50,29 @@ export default {
 </script>
 
 <template>
-  <main>
+  <main class="d-flex flex-column ">
+    <div class="container alignitemscen">
+      <div class="row justify-content-center ">
 
-    <div v-for="project in arrayProjects" :key="project.id">
-      <ProjectCard :project="project" />
+        <div class="col-3" v-for="project in arrayProjects" :key="project.id">
+          <ProjectCard :project="project" />
+        </div>
+      </div>
     </div>
+
+    <nav aria-label="Page navigation example">
+      <ul class="pagination">
+        <li class="page-item" :class="{ 'disabled': currentPage === 1 }">
+          <button class="page-link" @click="getProjects(currentPage - 1)">Previous</button>
+        </li>
+        <!-- <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li> -->
+        <li class="page-item" :class="{ 'disabled': currentPage === lastPage }">
+          <button class="page-link" @click="getProjects(currentPage + 1)">Next</button>
+        </li>
+      </ul>
+    </nav>
   </main>
 
 </template>
