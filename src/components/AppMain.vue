@@ -65,9 +65,12 @@ export default {
           <li class="page-item" :class="{ 'disabled': currentPage === 1 }">
             <button class="page-link" @click="getProjects(currentPage - 1)">Previous</button>
           </li>
-          <!-- <li class="page-item"><a class="page-link" href="#">1</a></li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li> -->
+
+
+          <li class="page-item" v-for=" ( element, index ) in lastPage" :key="index">
+            <button class="page-link" @click="getProjects(element)">{{ element }}</button>
+          </li>
+
           <li class="page-item" :class="{ 'disabled': currentPage === lastPage }">
             <button class="page-link" @click="getProjects(currentPage + 1)">Next</button>
           </li>
