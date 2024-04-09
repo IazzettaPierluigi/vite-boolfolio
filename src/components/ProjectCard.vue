@@ -1,12 +1,16 @@
 <template>
-    <div class="project-card">
-        <router-link :to="{ name: 'project', params: { slug: project.slug } }">
-            {{ project.title }}
-        </router-link>
-        <img :src="project.img" alt="Project Image">
-        <p>descrizione progetto: <span style="color: red;">{{ project.description }}</span></p>
-        <!-- Aggiungi qui qualsiasi altra informazione del progetto che vuoi visualizzare -->
+
+
+    <div class="card">
+        <img class="card-img-top" :src="`http://127.0.0.1:8000/storage/${project.img}`" alt="Title" />
+        <div class="card-body">
+            <router-link class="card-title" :to="{ name: 'project', params: { slug: project.slug } }">
+                {{ project.title }}
+            </router-link>
+            <p class="card-text">descrizione progetto: <span style="color: red;">{{ project.description }}</span></p>
+        </div>
     </div>
+
 </template>
 
 <script>
