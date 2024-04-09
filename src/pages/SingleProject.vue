@@ -42,7 +42,12 @@ export default {
                 <div class="card-body">
                     <h4 class="card-title">{{ project.title }}</h4>
                     <p class="card-text">{{ project.description }}</p>
-                    <p class="card-tex">{{ project.technology }}</p>
+                    <ul v-if="project.technologies && project.technologies.length > 0">
+                        <li v-for="technology in project.technologies" :key="technology.id">
+                            {{ technology.name }}
+                        </li>
+                    </ul>
+                    <p v-else>Nessuna tecnologia specificata per questo progetto</p>
 
                 </div>
             </div>
