@@ -49,6 +49,12 @@ export default {
                         </router-link>
                     </li>
 
+                    <li class="nav-item">
+                        <router-link :to="{ name: 'contact-us' }" class="nav-link">
+                            Contattaci
+                        </router-link>
+                    </li>
+
                 </ul>
 
             </div>
